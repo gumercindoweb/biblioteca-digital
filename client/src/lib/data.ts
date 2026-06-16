@@ -1,5 +1,5 @@
 // ============================================================
-// BIBLIOTECA DIGITAL — Datos de recursos
+// BIBLIOTECA DIGITAL — Datos de recursos reales
 // Gumercindo Jiménez Branding
 // ============================================================
 
@@ -36,12 +36,6 @@ export type Resource = {
   isFavorite?: boolean;
 };
 
-export const statusColors: Record<Status, string> = {
-  "leyendo": "#0A8769",
-  "en-cola": "#A8C2C0",
-  "completado": "#E6F2F1"
-};
-
 export const categories: Category[] = [
   { id: "todos", name: "Todos", numeral: "∞", color: "#0A8769" },
   { id: "marketing", name: "Marketing", numeral: "I", color: "#0A8769" },
@@ -58,7 +52,7 @@ export const categories: Category[] = [
 ];
 
 export const resources: Resource[] = [
-  // ─── LIBROS (20) ───────────────────────────────────────────
+  // --- LIBROS (20) ---
   { id: "influencia", title: "Influencia", author: "Robert Cialdini", description: "Los principios psicológicos de la persuasión y cómo aplicarlos en ventas y marketing.", type: "libro", category: "ventas", status: "en-cola", tags: ["persuasión", "psicología", "ventas"] },
   { id: "fiesta-cocteles", title: "La fiesta de cócteles de dos horas", author: "Nico Gray", description: "Cómo construir relaciones valiosas y expandir tu red de contactos de forma auténtica.", type: "libro", category: "negocios", status: "en-cola", tags: ["networking", "relaciones", "social"] },
   { id: "disena-tu-vida", title: "Diseña tu vida", author: "Dave Evans y Bill Burnett", description: "Aplica el pensamiento de diseño para construir una vida significativa y satisfactoria.", type: "libro", category: "desarrollo-personal", status: "en-cola", tags: ["diseño", "propósito", "vida"] },
@@ -72,48 +66,48 @@ export const resources: Resource[] = [
   { id: "fe-es-tu-fortuna", title: "Tu fe es tu fortuna", author: "Neville Goddard", description: "Cómo la fe y la imaginación son las fuerzas creadoras de nuestra realidad.", type: "libro", category: "espiritualidad", status: "en-cola", tags: ["fe", "manifestación", "imaginación"] },
   { id: "oversubscribed", title: "Oversubscribed", author: "Daniel Priestley", description: "Cómo construir un negocio tan demandado que los clientes hagan fila para comprarte.", type: "libro", category: "marketing", status: "en-cola", tags: ["demanda", "marketing", "posicionamiento"] },
   { id: "hiperdexconexion", title: "Hiperdexconexión", author: "Marta Romo", description: "Estrategias para conectar profundamente con tu audiencia en la era digital.", type: "libro", category: "marketing", status: "en-cola", tags: ["conexión", "audiencia", "digital"] },
-  { id: "estrategia-conflicto", title: "La estrategia del conflicto", author: "Thomas Schelling", description: "Análisis estratégico de diseño de conflictos y negociaciones en economía y política.", type: "libro", category: "negocios", status: "en-cola", tags: ["estrategia", "conflicto", "negociación"] },
+  { id: "estrategia-conflicto", title: "La estrategia del conflicto", author: "Thomas Schelling", description: "Análisis estratégico de conflictos y negociaciones en economía y política.", type: "libro", category: "negocios", status: "en-cola", tags: ["estrategia", "conflicto", "negociación"] },
   { id: "generacion-dopamina", title: "Generación dopamina", author: "Anna Lembke", description: "Cómo el exceso de estimulación digital está afectando nuestra salud mental y bienestar.", type: "libro", category: "psicologia", status: "en-cola", tags: ["dopamina", "bienestar", "digital"] },
   { id: "12-reglas-vida", title: "12 Reglas para la vida", author: "Jordan Peterson", description: "Principios prácticos para vivir una vida significativa y responsable.", type: "libro", category: "desarrollo-personal", status: "en-cola", tags: ["responsabilidad", "significado", "vida"] },
   { id: "mindset", title: "Mindset", author: "Carol Dweck", description: "La mentalidad de crecimiento: cómo el pensamiento fijo limita y el flexible transforma.", type: "libro", category: "psicologia", status: "en-cola", tags: ["mentalidad", "crecimiento", "aprendizaje"] },
-  { id: "quien-no-como", title: "Quién no cómo", author: "Dan Sullivan", description: "Cómo identificar y eliminar las personas que sabotean tu éxito y crecimiento.", type: "libro", category: "negocios", status: "en-cola", tags: ["relaciones", "éxito", "límites"] },
+  { id: "quien-no-como", title: "Quién no como", author: "Dan Sullivan", description: "Cómo identificar y eliminar las personas que sabotean tu éxito y crecimiento.", type: "libro", category: "negocios", status: "en-cola", tags: ["relaciones", "éxito", "límites"] },
   { id: "negociar-cualquier-cosa", title: "Puedes negociar cualquier cosa", author: "Herb Cohen", description: "Técnicas prácticas y probadas para negociar efectivamente en cualquier situación.", type: "libro", category: "negocios", status: "en-cola", tags: ["negociación", "ventas", "comunicación"] },
   { id: "10-es-mas-facil-2", title: "10. Es más fácil que 2", author: "Dan Sullivan", description: "Por qué es más fácil lograr objetivos 10 veces mayores que objetivos apenas mejores.", type: "libro", category: "negocios", status: "en-cola", tags: ["objetivos", "crecimiento", "mentalidad"] },
 
-  // ─── PODCASTS (18) ──────────────────────────────────────────
-  { id: "podcast-1", title: "7 Things You Should Avoid If You Want to Be Rich", type: "podcast", category: "finanzas", url: "https://www.youtube.com/watch?v=KMbFjoHUYbA" },
-  { id: "podcast-2", title: "I Wish I Knew This Before Starting A Business", type: "podcast", category: "negocios", url: "https://www.youtube.com/watch?v=A54VFBYfF9U" },
-  { id: "podcast-3", title: "If I Started From Scratch Again, I'd Do This", type: "podcast", category: "finanzas", url: "https://www.youtube.com/watch?v=6IiEoSHw9gY" },
-  { id: "podcast-4", title: "7 Signs You'll Become a Millionaire Soon", type: "podcast", category: "finanzas", url: "https://www.youtube.com/watch?v=JqJ2l4frTrU" },
-  { id: "podcast-5", title: "The Only Print On Demand Guide You Need in 2026", type: "podcast", category: "negocios", url: "https://www.youtube.com/watch?v=9tKeNT-k4kk" },
-  { id: "podcast-6", title: "Do This EVERY Time You Get Paid", type: "podcast", category: "finanzas", url: "https://www.youtube.com/watch?v=sPm9pynCS0k" },
-  { id: "podcast-7", title: "Smartest Route To $10,000/Month In 2026", type: "podcast", category: "negocios", url: "https://www.youtube.com/watch?v=mwYsapR6cYk" },
-  { id: "podcast-8", title: "The Smartest Path to Financial Freedom in 2026", type: "podcast", category: "finanzas", url: "https://www.youtube.com/watch?v=C_UeYBBogPA" },
-  { id: "podcast-9", title: "I Tried AI Dropshipping For a Week", type: "podcast", category: "negocios", url: "https://www.youtube.com/watch?v=rhuYy9LP72M" },
-  { id: "podcast-10", title: "Do THIS to Make $10,000 as a Student", type: "podcast", category: "negocios", url: "https://www.youtube.com/watch?v=XyZ_X9-k8q8" },
-  { id: "podcast-11", title: "I Spent 24 Hours with the Richest YouTube Entrepreneur", type: "podcast", category: "negocios", url: "https://www.youtube.com/watch?v=cLdMjVvP7kE" },
-  { id: "podcast-12", title: "Do THIS to Make $10,000 as a Student (Part 2)", type: "podcast", category: "negocios", url: "https://www.youtube.com/watch?v=BvDAUqLQ-uc" },
-  { id: "podcast-13", title: "7 Signs You'll Become Rich", type: "podcast", category: "finanzas", url: "https://www.youtube.com/watch?v=JqJ2l4frTrU" },
-  { id: "podcast-14", title: "Best AI Business to Start in 2026", type: "podcast", category: "negocios", url: "https://www.youtube.com/watch?v=mwYsapR6cYk" },
-  { id: "podcast-15", title: "How to Get Financial Freedom Fast", type: "podcast", category: "finanzas", url: "https://www.youtube.com/watch?v=C_UeYBBogPA" },
-  { id: "podcast-16", title: "Is Dropshipping Dead in 2026?", type: "podcast", category: "negocios", url: "https://www.youtube.com/watch?v=rhuYy9LP72M" },
-  { id: "podcast-17", title: "Passive Income with AI (Step by Step)", type: "podcast", category: "negocios", url: "https://www.youtube.com/watch?v=9tKeNT-k4kk" },
-  { id: "podcast-18", title: "The Secrets of the Richest YouTube Entrepreneurs", type: "podcast", category: "marketing", url: "https://www.youtube.com/watch?v=cLdMjVvP7kE" },
+  // --- PODCASTS (18) ---
+  { id: "podcast-1", title: "7 Things You Should Avoid If You Want to Be Rich", type: "podcast", category: "finanzas", url: "https://youtu.be/KMbFjoHUYbA", tags: ["finanzas", "riqueza"] },
+  { id: "podcast-2", title: "I Wish I Knew This Before Starting A Business", type: "podcast", category: "negocios", url: "https://youtu.be/A54VFBYfF9U", tags: ["negocios", "lecciones"] },
+  { id: "podcast-3", title: "If I Started From Scratch Again, I'd Do This", type: "podcast", category: "finanzas", url: "https://youtu.be/6IiEoSHw9gY", tags: ["comienzo", "estrategia"] },
+  { id: "podcast-4", title: "7 Signs You'll Become a Millionaire Soon", type: "podcast", category: "finanzas", url: "https://youtu.be/JqJ2l4frTrU", tags: ["millonario", "señales"] },
+  { id: "podcast-5", title: "The Only Print On Demand Guide You Need in 2026", type: "podcast", category: "negocios", url: "https://youtu.be/9tKeNT-k4kk", tags: ["POD", "guía"] },
+  { id: "podcast-6", title: "Do This EVERY Time You Get Paid", type: "podcast", category: "finanzas", url: "https://youtu.be/sPm9pynCS0k", tags: ["salario", "riqueza"] },
+  { id: "podcast-7", title: "Smartest Route To $10,000/Month In 2026", type: "podcast", category: "negocios", url: "https://youtu.be/mwYsapR6cYk", tags: ["ruta", "ingresos"] },
+  { id: "podcast-8", title: "The Smartest Path to Financial Freedom in 2026", type: "podcast", category: "finanzas", url: "https://youtu.be/C_UeYBBogPA", tags: ["libertad financiera"] },
+  { id: "podcast-9", title: "I Tried AI Dropshipping For a Week", type: "podcast", category: "negocios", url: "https://youtu.be/rhuYy9LP72M", tags: ["AI", "dropshipping"] },
+  { id: "podcast-10", title: "Do THIS to Make $10,000 as a Student", type: "podcast", category: "negocios", url: "https://youtu.be/BvDAUqLQ-uc", tags: ["estudiantes", "ingresos"] },
+  { id: "podcast-11", title: "Pasé 24 Horas con el Empresario de YouTube Más Rico", type: "podcast", category: "negocios", url: "https://youtu.be/cLdMjVvP7kE", tags: ["YouTube", "empresario"] },
+  { id: "podcast-12", title: "El Experto en Ganar Dinero: Fórmula $100 a $100k", type: "podcast", category: "finanzas", url: "https://youtu.be/u0o3IlsEQbI", tags: ["fórmula", "ganar dinero"] },
+  { id: "podcast-13", title: "Seminario Fénix Brian Tracy Completo", type: "podcast", category: "psicologia", url: "https://youtu.be/zUxj7J8HttM", tags: ["Destacado", "éxito"] },
+  { id: "podcast-14", title: "Oz Pearlman: El Error que Hace que no te Acepten", type: "podcast", category: "negocios", url: "https://youtu.be/4qfxHfBJ3Mw", tags: ["Destacado", "confianza"] },
+  { id: "podcast-15", title: "Tony Robbins: La Verdad sobre la IA", type: "podcast", category: "negocios", url: "https://youtu.be/I_w81rptxkc", tags: ["IA", "futuro"] },
+  { id: "podcast-16", title: "Alex Hormozi: Fórmula $0 a $10k Paso a Paso", type: "podcast", category: "negocios", url: "https://youtu.be/Kl-I7sUcAOY", tags: ["Destacado", "fórmula"] },
+  { id: "podcast-17", title: "Vanessa Van Edwards: Lenguaje Corporal Carismático", type: "podcast", category: "negocios", url: "https://youtu.be/VHUrdELKjDw", tags: ["carisma", "conexión"] },
+  { id: "podcast-18", title: "Chris Koerner: Ingresos Pasivos $10k en 90 Días", type: "podcast", category: "negocios", url: "https://youtu.be/4QLWlcneJig", tags: ["Destacado", "ingresos pasivos"] },
 
-  // ─── PLATAFORMAS (11) ───────────────────────────────────────
-  { id: "plat-1", title: "12 Recordatorios — 12 Libros", type: "plataforma", category: "desarrollo-personal" },
-  { id: "plat-2", title: "ClickUp", type: "plataforma", category: "negocios" },
-  { id: "plat-3", title: "Notion", type: "plataforma", category: "negocios" },
-  { id: "plat-4", title: "ChatGPT Plus", type: "plataforma", category: "negocios" },
-  { id: "plat-5", title: "Canva Pro", type: "plataforma", category: "marketing" },
-  { id: "plat-6", title: "Shopify", type: "plataforma", category: "negocios" },
-  { id: "plat-7", title: "Meta Ads Manager", type: "plataforma", category: "marketing" },
-  { id: "plat-8", title: "Stripe", type: "plataforma", category: "finanzas" },
-  { id: "plat-9", title: "Beehiiv", type: "plataforma", category: "marketing" },
-  { id: "plat-10", title: "Skool", type: "plataforma", category: "negocios" },
-  { id: "plat-11", title: "Calendly", type: "plataforma", category: "negocios" },
+  // --- PLATAFORMAS (11) ---
+  { id: "plat-1", title: "12 Recordatorios — 12 Libros", type: "plataforma", category: "desarrollo-personal", tags: ["resúmenes", "libros"] },
+  { id: "plat-2", title: "Mindvalley", type: "plataforma", category: "desarrollo-personal", url: "https://home.mindvalley.com/today", tags: ["aprendizaje", "meditación"] },
+  { id: "plat-3", title: "MasterClass", type: "plataforma", category: "negocios", url: "https://www.masterclass.com/homepage", tags: ["clases", "maestros"] },
+  { id: "plat-4", title: "WePlay Academy", type: "plataforma", category: "desarrollo-personal", url: "https://academia.weplash.com/feed", tags: ["creatividad", "profesional"] },
+  { id: "plat-5", title: "Marisa Peer - Reshape Your Future", type: "plataforma", category: "psicologia", url: "https://marisapeer.mykajabi.com/products/reshape-your-future-with-hypnosis", tags: ["hipnosis", "creencias"] },
+  { id: "plat-6", title: "Official Mastermind", type: "plataforma", category: "negocios", url: "https://official.mastermind.com/c/start-here", tags: ["comunidad", "líderes"] },
+  { id: "plat-7", title: "Executive Business Experience", type: "plataforma", category: "negocios", url: "https://executive-business-experience.mykajabi.com/library", tags: ["ejecutivo", "cumbre"] },
+  { id: "plat-8", title: "Programa COCO y Marca Personal", type: "plataforma", category: "marketing", url: "https://jump.vilmanunez.com/library", tags: ["marca personal", "presencia"] },
+  { id: "plat-9", title: "Método RPM - Tony Robbins", type: "plataforma", category: "negocios", url: "https://tonyrobbinsrpm.com/client/index.php", tags: ["RPM", "objetivos"] },
+  { id: "plat-10", title: "Programa RAIO - Kale Anders", type: "plataforma", category: "idiomas", url: "https://kaleanders.clickfunnels.com/members/sign_in", tags: ["RAIO", "inglés"] },
+  { id: "plat-11", title: "AI Creator Course - Edición de Video", type: "plataforma", category: "marketing", url: "https://www.contentcreator.com/ai-creator-course", tags: ["AI", "video"] },
 
-  // ─── CANALES YOUTUBE (16) ───────────────────────────────────
+  // --- CANALES YOUTUBE (16) ---
   { id: "yt-1", title: "The Diary of a CEO", type: "youtube", category: "negocios", url: "https://www.youtube.com/@TheDiaryOfACEO" },
   { id: "yt-2", title: "Lewis Howes Español", type: "youtube", category: "desarrollo-personal", url: "https://www.youtube.com/@LewisHowesEspañol" },
   { id: "yt-3", title: "Dan Martell", type: "youtube", category: "negocios", url: "https://www.youtube.com/@danmartell" },
@@ -131,7 +125,7 @@ export const resources: Resource[] = [
   { id: "yt-15", title: "Tengo un Plan", type: "youtube", category: "negocios", url: "https://www.youtube.com/@tengounplanpodcast" },
   { id: "yt-16", title: "Mark Tilbury", type: "youtube", category: "finanzas", url: "https://www.youtube.com/@marktilbury" },
 
-  // ─── SUSCRIPCIONES ──────────────────────────────────────────
+  // --- SUSCRIPCIONES ---
   { id: "ff-1", title: "Flyfree Masterclass", type: "youtube", category: "flyfree", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
   { id: "ffa-1", title: "Mentalidad Adulta", type: "youtube", category: "flyfree-adulto", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
   { id: "cnm-1", title: "Comunidad NM Estrategia", type: "youtube", category: "comunidad-nm", url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },

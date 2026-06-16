@@ -41,6 +41,7 @@ export default function Home() {
 
   const typeCounts = useMemo(() => {
     const counts: Record<string, number> = { libro: 0, podcast: 0, plataforma: 0, youtube: 0 };
+    // El conteo en el header siempre muestra el total del estante actual filtrado por tipo
     filteredResources.forEach((r) => { if (counts[r.type] !== undefined) counts[r.type]++; });
     return counts;
   }, [filteredResources]);
