@@ -1,6 +1,7 @@
 /**
  * SIDEBAR — Biblioteca Digital
  * Gumercindo Jiménez Branding
+ * Mantiene estructura original pero con colores GJ y Logo
  */
 
 import { useState } from "react";
@@ -72,6 +73,7 @@ export default function Sidebar({
           className={`flex items-center gap-2 px-3 py-2 bg-gj-petrol border transition-all ${
             searchFocused ? "border-gj-teal" : "border-gj-teal/10"
           }`}
+          style={{ borderRadius: '0px' }}
         >
           <Search size={14} className="text-gj-teal" />
           <input
@@ -109,6 +111,7 @@ export default function Sidebar({
                       ? "bg-gj-teal/10 text-white border-l-2 border-gj-teal" 
                       : "text-gj-mint/40 hover:text-gj-mint hover:bg-gj-teal/5 border-l-2 border-transparent"
                   }`}
+                  style={{ borderRadius: '0px' }}
                 >
                   <span className={`font-mono text-[10px] font-bold min-w-[20px] ${isActive ? "text-gj-teal" : "text-gj-mint/20"}`}>
                     {cat.numeral}
@@ -140,6 +143,7 @@ export default function Sidebar({
                       ? "bg-gj-teal/10 text-white border-l-2 border-gj-teal" 
                       : "text-gj-mint/40 hover:text-gj-mint hover:bg-gj-teal/5 border-l-2 border-transparent"
                   }`}
+                  style={{ borderRadius: '0px' }}
                 >
                   <span className={isActive ? "text-gj-teal" : "text-gj-mint/20"}>
                     {t.id !== "todos" ? typeIcons[t.id as ResourceType] : <Library size={14} />}
@@ -158,6 +162,7 @@ export default function Sidebar({
         <button
           onClick={onAddResource}
           className="gj-btn w-full flex items-center justify-center gap-2 py-2.5 text-xs"
+          style={{ borderRadius: '0px' }}
         >
           <Plus size={14} />
           Agregar recurso

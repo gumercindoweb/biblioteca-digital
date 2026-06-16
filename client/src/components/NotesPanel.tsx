@@ -9,18 +9,18 @@ import { nanoid } from "nanoid";
 const noteTypeConfig: Record<NoteType, { label: string; color: string; bgColor: string }> = {
   aprendizaje: {
     label: "Aprendizaje",
-    color: "#0A8769",
-    bgColor: "rgba(10, 135, 105, 0.08)",
+    color: "#C8922A",
+    bgColor: "rgba(200, 146, 42, 0.08)",
   },
   semilla: {
     label: "Semilla",
-    color: "#A8C2C0",
-    bgColor: "rgba(168, 194, 192, 0.08)",
+    color: "#7B9E87",
+    bgColor: "rgba(123, 158, 135, 0.08)",
   },
   conexion: {
     label: "Conexión",
-    color: "#E6F2F1",
-    bgColor: "rgba(230, 242, 241, 0.08)",
+    color: "#6B8E9E",
+    bgColor: "rgba(107, 142, 158, 0.08)",
   },
 };
 
@@ -51,35 +51,35 @@ export function NotesPanel() {
   };
 
   return (
-    <div className="fixed right-0 top-0 h-screen w-96 bg-gj-petrol-dark border-l border-gj-teal/10 shadow-2xl z-40 flex flex-col overflow-hidden font-body">
+    <div className="fixed right-0 top-0 h-screen w-96 bg-card border-l border-border shadow-2xl z-40 flex flex-col overflow-hidden">
       {/* Header */}
-      <div className="p-8 border-b border-gj-teal/10 flex items-start justify-between bg-gj-petrol-dark">
+      <div className="p-6 border-b border-border flex items-start justify-between bg-gradient-to-b from-card to-transparent">
         <div className="flex-1 pr-4">
-          <h2 className="text-lg font-bold text-white uppercase tracking-tight mb-2 line-clamp-2">
+          <h2 className="text-lg font-playfair font-bold text-foreground mb-1 line-clamp-2">
             {selectedResource.title}
           </h2>
           {selectedResource.author && (
-            <p className="text-[10px] font-bold text-gj-teal uppercase tracking-widest">{selectedResource.author}</p>
+            <p className="text-xs text-muted-foreground italic">{selectedResource.author}</p>
           )}
         </div>
         <button
           onClick={() => setSelectedResource(null)}
-          className="text-gj-mint/20 hover:text-white transition-colors flex-shrink-0"
+          className="text-muted-foreground hover:text-foreground transition-colors flex-shrink-0 hover:scale-110"
         >
           <X size={20} />
         </button>
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-gj-teal/10 px-6 pt-4 gap-2">
+      <div className="flex border-b border-border px-4 pt-3 gap-1">
         {(["aprendizaje", "semilla", "conexion"] as NoteType[]).map((type) => (
           <button
             key={type}
             onClick={() => setActiveTab(type)}
-            className={`pb-4 px-3 text-[10px] font-bold uppercase tracking-widest transition-all border-b-2 ${
+            className={`pb-3 px-3 text-xs font-medium transition-all border-b-2 ${
               activeTab === type
-                ? "text-white border-gj-teal"
-                : "text-gj-mint/20 border-transparent hover:text-gj-mint/40"
+                ? "text-foreground border-amber-600 font-semibold"
+                : "text-muted-foreground border-transparent hover:text-foreground"
             }`}
           >
             {noteTypeConfig[type].label}
@@ -88,28 +88,29 @@ export function NotesPanel() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto p-8 space-y-6">
+      <div className="flex-1 overflow-y-auto p-6 space-y-4">
         {tabNotes.length === 0 && !isAddingNote && (
-          <div className="text-center py-20 border border-dashed border-gj-teal/10">
-            <p className="text-xs font-bold uppercase tracking-widest text-gj-mint/20">
+          <div className="text-center py-12 text-muted-foreground">
+            <p className="text-sm">
               No hay {noteTypeConfig[activeTab].label.toLowerCase()}s aún
             </p>
-            <p className="text-[10px] uppercase tracking-widest text-gj-mint/10 mt-2">Hacé click abajo para empezar</p>
+            <p className="text-xs mt-2 opacity-60">Haz click en "Agregar" para empezar</p>
           </div>
         )}
 
         {tabNotes.map((note) => (
           <div
             key={note.id}
-            className="p-5 border border-gj-teal/10 hover:border-gj-teal/30 transition-all bg-gj-petrol"
+            className="p-4 rounded-lg border border-border hover:border-amber-600/30 transition-all"
+            style={{ backgroundColor: noteTypeConfig[note.type].bgColor }}
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
-                <p className="text-sm text-gj-mint-light leading-relaxed whitespace-pre-wrap">
+                <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">
                   {note.content}
                 </p>
-                <p className="text-[9px] font-bold uppercase tracking-widest text-gj-mint/20 mt-4">
-                  {new Date(note.createdAt).toLocaleDateString("es-AR", {
+                <p className="text-xs text-muted-foreground mt-2">
+                  {new Date(note.createdAt).toLocaleDateString("es-ES", {
                     day: "numeric",
                     month: "short",
                     year: "numeric",
@@ -118,7 +119,7 @@ export function NotesPanel() {
               </div>
               <button
                 onClick={() => deleteNote(selectedResource.id, note.id)}
-                className="text-gj-mint/10 hover:text-destructive transition-colors flex-shrink-0"
+                className="text-muted-foreground hover:text-destructive transition-colors flex-shrink-0 hover:scale-110"
               >
                 <Trash2 size={16} />
               </button>
@@ -127,30 +128,34 @@ export function NotesPanel() {
         ))}
 
         {isAddingNote && (
-          <div className="p-6 border border-gj-teal/20 bg-gj-petrol space-y-4">
+          <div className="p-4 rounded-lg border border-border space-y-3">
             <Textarea
-              placeholder={`Escribí tu ${noteTypeConfig[activeTab].label.toLowerCase()}...`}
+              placeholder={`Escribe tu ${noteTypeConfig[activeTab].label.toLowerCase()}...`}
               value={newNoteContent}
               onChange={(e) => setNewNoteContent(e.target.value)}
-              className="min-h-32 bg-gj-petrol-dark border-gj-teal/10 text-white text-sm placeholder:text-gj-mint/20 resize-none"
+              className="min-h-24 resize-none text-sm"
               autoFocus
             />
-            <div className="flex gap-3">
-              <button
+            <div className="flex gap-2">
+              <Button
+                size="sm"
                 onClick={handleAddNote}
-                className="gj-btn flex-1 text-xs py-2"
+                className="flex-1 text-white"
+                style={{ backgroundColor: noteTypeConfig[activeTab].color }}
               >
                 Guardar
-              </button>
-              <button
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
                 onClick={() => {
                   setIsAddingNote(false);
                   setNewNoteContent("");
                 }}
-                className="flex-1 border border-gj-teal/10 text-gj-mint/20 font-bold uppercase tracking-widest text-[10px] hover:bg-gj-teal/5 transition-all"
+                className="flex-1"
               >
                 Cancelar
-              </button>
+              </Button>
             </div>
           </div>
         )}
@@ -158,14 +163,15 @@ export function NotesPanel() {
 
       {/* Footer - Add Note Button */}
       {!isAddingNote && (
-        <div className="p-8 border-t border-gj-teal/10 bg-gj-petrol-dark">
-          <button
+        <div className="p-6 border-t border-border bg-gradient-to-t from-card to-transparent">
+          <Button
             onClick={() => setIsAddingNote(true)}
-            className="gj-btn w-full text-xs"
+            className="w-full text-white font-medium"
+            style={{ backgroundColor: noteTypeConfig[activeTab].color }}
           >
-            <Plus size={16} className="mr-2 inline-block" />
+            <Plus size={16} className="mr-2" />
             Agregar {noteTypeConfig[activeTab].label.toLowerCase()}
-          </button>
+          </Button>
         </div>
       )}
     </div>

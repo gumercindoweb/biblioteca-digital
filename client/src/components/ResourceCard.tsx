@@ -1,7 +1,8 @@
-/**
- * RESOURCE CARD — Biblioteca Digital
- * Gumercindo Jiménez Branding
- */
+// ============================================================
+// RESOURCE CARD — Biblioteca Digital
+// Gumercindo Jiménez Branding
+// Mantiene estructura de Archivo Nocturno pero con colores GJ
+// ============================================================
 
 import { Resource, ResourceType, statusColors, statusLabels } from "@/lib/data";
 import { BookOpen, Headphones, Monitor, Youtube, ExternalLink, Tag, FileText } from "lucide-react";
@@ -15,8 +16,8 @@ const typeIcons: Record<ResourceType, React.ReactNode> = {
 };
 
 const typeColors: Record<ResourceType, string> = {
-  libro: "#0A8769", // Teal
-  podcast: "#A8C2C0", 
+  libro: "#0A8769",
+  podcast: "#A8C2C0",
   plataforma: "#E6F2F1",
   youtube: "#0A8769",
 };
@@ -42,28 +43,32 @@ export default function ResourceCard({ resource, index }: ResourceCardProps) {
 
   return (
     <div
-      className="gj-card p-5 animate-fade-slide-up cursor-pointer transition-all hover:border-gj-teal/40 group"
-      style={{ animationDelay: `${index * 40}ms` }}
+      className="gj-card p-4 animate-fade-slide-up cursor-pointer transition-all hover:shadow-lg hover:border-gj-teal/50"
+      style={{ 
+        animationDelay: `${index * 40}ms`,
+        borderRadius: '0px'
+      }}
       onClick={() => setSelectedResource(resource)}
     >
       {/* Indicador de notas */}
       {hasNotes && (
-        <div className="flex items-center gap-1 mb-3 text-gj-teal">
-          <FileText size={14} />
-          <span className="text-[10px] font-bold uppercase tracking-widest">{notes.length} nota{notes.length > 1 ? "s" : ""}</span>
+        <div className="flex items-center gap-1 mb-2 text-gj-teal">
+          <FileText size={13} />
+          <span className="text-xs font-medium">{notes.length} nota{notes.length > 1 ? "s" : ""}</span>
         </div>
       )}
 
       {/* Header de la tarjeta */}
-      <div className="flex items-start justify-between gap-2 mb-4">
+      <div className="flex items-start justify-between gap-2 mb-3">
         <div className="flex items-center gap-2 flex-wrap">
           {/* Badge de tipo */}
           <span
-            className="flex items-center gap-1.5 px-2 py-0.5 border text-[9px] font-bold uppercase tracking-widest"
+            className="flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest border"
             style={{
               color,
               borderColor: `${color}40`,
               background: bg,
+              borderRadius: '0px'
             }}
           >
             {typeIcons[resource.type]}
@@ -79,11 +84,12 @@ export default function ResourceCard({ resource, index }: ResourceCardProps) {
           {/* Badge de estado */}
           {resource.status && (
             <span
-              className="px-2 py-0.5 border text-[9px] font-bold uppercase tracking-widest"
+              className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest border"
               style={{
                 color: statusColors[resource.status],
                 borderColor: `${statusColors[resource.status]}40`,
                 background: `${statusColors[resource.status]}12`,
+                borderRadius: '0px'
               }}
             >
               {statusLabels[resource.status]}
@@ -97,42 +103,76 @@ export default function ResourceCard({ resource, index }: ResourceCardProps) {
             href={resource.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 p-1 text-gj-mint/20 hover:text-gj-teal transition-colors"
+            className="shrink-0 p-1 transition-colors"
+            style={{ color: "#A8C2C0" }}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#0A8769")}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#A8C2C0")}
             onClick={(e) => e.stopPropagation()}
           >
-            <ExternalLink size={14} />
+            <ExternalLink size={13} />
           </a>
         )}
       </div>
 
       {/* Título */}
-      <h3 className="mb-2 font-bold text-white text-base uppercase tracking-tight leading-tight group-hover:text-gj-teal transition-colors">
+      <h3
+        className="mb-1 leading-snug"
+        style={{
+          fontFamily: "'Poppins', sans-serif",
+          fontSize: "0.95rem",
+          fontWeight: 600,
+          color: "#FFFFFF",
+          lineHeight: 1.3,
+        }}
+      >
         {resource.title}
       </h3>
 
       {/* Autor */}
       {resource.author && (
-        <p className="mb-3 text-[10px] font-bold text-gj-teal uppercase tracking-widest">
+        <p
+          className="mb-2"
+          style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: "0.75rem",
+            color: "#0A8769",
+            fontStyle: "italic",
+          }}
+        >
           {resource.author}
         </p>
       )}
 
       {/* Descripción */}
       {resource.description && (
-        <p className="mb-4 text-xs text-gj-mint-light/60 leading-relaxed line-clamp-3">
+        <p
+          className="mb-3 leading-relaxed"
+          style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: "0.78rem",
+            color: "#A8C2C0",
+            lineHeight: 1.55,
+          }}
+        >
           {resource.description}
         </p>
       )}
 
       {/* Tags */}
       {resource.tags && resource.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-gj-teal/10">
+        <div className="flex flex-wrap gap-1.5 mt-auto pt-2" style={{ borderTop: "1px solid rgba(10, 135, 105, 0.1)" }}>
           {resource.tags.map((tag) => (
             <span
               key={tag}
-              className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-widest text-gj-mint/20"
+              className="flex items-center gap-1"
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: "0.58rem",
+                color: "rgba(168, 194, 192, 0.6)",
+                letterSpacing: "0.04em",
+              }}
             >
-              <Tag size={10} className="text-gj-teal/40" />
+              <Tag size={9} />
               {tag}
             </span>
           ))}

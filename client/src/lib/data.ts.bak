@@ -1,6 +1,6 @@
 // ============================================================
 // BIBLIOTECA DIGITAL — Datos de recursos
-// Gumercindo Jiménez Branding
+// Diseño: Archivo Nocturno — negro cálido + ámbar dorado
 // ============================================================
 
 export type ResourceType = "libro" | "podcast" | "plataforma" | "youtube";
@@ -34,34 +34,15 @@ export type Resource = {
   notes?: Note[];
 };
 
-export const statusColors: Record<Status, string> = {
-  "leyendo": "#0A8769",
-  "en-cola": "#A8C2C0",
-  "completado": "#E6F2F1"
-};
-
-export const statusLabels: Record<Status, string> = {
-  "leyendo": "Leyendo",
-  "en-cola": "En cola",
-  "completado": "Completado"
-};
-
-export const resourceTypeLabels: Record<ResourceType, string> = {
-  libro: "Libro",
-  podcast: "Podcast",
-  plataforma: "Plataforma",
-  youtube: "YouTube"
-};
-
 export const categories: Category[] = [
-  { id: "todos", name: "Todos", numeral: "∞", color: "#0A8769" },
-  { id: "marketing", name: "Marketing", numeral: "I", color: "#0A8769" },
-  { id: "ventas", name: "Ventas", numeral: "II", color: "#0A8769" },
-  { id: "negocios", name: "Negocios", numeral: "III", color: "#0A8769" },
-  { id: "psicologia", name: "Psicología", numeral: "IV", color: "#0A8769" },
-  { id: "espiritualidad", name: "Espiritualidad", numeral: "V", color: "#0A8769" },
-  { id: "desarrollo-personal", name: "Desarrollo Personal", numeral: "VI", color: "#0A8769" },
-  { id: "finanzas", name: "Finanzas", numeral: "VII", color: "#0A8769" },
+  { id: "todos", name: "Todos", numeral: "∞", color: "#C8922A" },
+  { id: "marketing", name: "Marketing", numeral: "I", color: "#C8922A" },
+  { id: "ventas", name: "Ventas", numeral: "II", color: "#B87333" },
+  { id: "negocios", name: "Negocios", numeral: "III", color: "#A0785A" },
+  { id: "psicologia", name: "Psicología", numeral: "IV", color: "#8B6B8A" },
+  { id: "espiritualidad", name: "Espiritualidad", numeral: "V", color: "#7B9E87" },
+  { id: "desarrollo-personal", name: "Desarrollo Personal", numeral: "VI", color: "#9E8B7B" },
+  { id: "finanzas", name: "Finanzas", numeral: "VII", color: "#6B8E9E" },
 ];
 
 export const resources: Resource[] = [
@@ -70,7 +51,7 @@ export const resources: Resource[] = [
     id: "influencia",
     title: "Influencia",
     author: "Robert Cialdini",
-    description: "Los principios psicológicos de la persuasión y cómo aplicalos en tus ventas y marketing.",
+    description: "Los principios psicológicos de la persuasión y cómo aplicarlos en ventas y marketing.",
     type: "libro",
     category: "ventas",
     status: "en-cola",
@@ -80,7 +61,7 @@ export const resources: Resource[] = [
     id: "fiesta-cocteles",
     title: "La fiesta de cócteles de dos horas",
     author: "Nico Gray",
-    description: "Cómo construí relaciones valiosas y expandí tu red de contactos de forma auténtica.",
+    description: "Cómo construir relaciones valiosas y expandir tu red de contactos de forma auténtica.",
     type: "libro",
     category: "negocios",
     status: "en-cola",
@@ -88,9 +69,9 @@ export const resources: Resource[] = [
   },
   {
     id: "disena-tu-vida",
-    title: "Diseñá tu vida",
+    title: "Diseña tu vida",
     author: "Dave Evans y Bill Burnett",
-    description: "Aplicá el pensamiento de diseño para construir una vida significativa y satisfactoria.",
+    description: "Aplica el pensamiento de diseño para construir una vida significativa y satisfactoria.",
     type: "libro",
     category: "desarrollo-personal",
     status: "en-cola",
@@ -98,7 +79,7 @@ export const resources: Resource[] = [
   },
   {
     id: "montana-eres-tu",
-    title: "La montaña sos vos",
+    title: "La montaña eres tú",
     author: "Brianna Wiest",
     description: "Cómo superar el autosabotaje y transformar los obstáculos internos en fortaleza.",
     type: "libro",
@@ -110,7 +91,7 @@ export const resources: Resource[] = [
     id: "poder-conciencia",
     title: "El poder de la conciencia",
     author: "Neville Goddard",
-    description: "Cómo usá la imaginación y la conciencia para manifestar la realidad que deseás.",
+    description: "Cómo usar la imaginación y la conciencia para manifestar la realidad deseada.",
     type: "libro",
     category: "espiritualidad",
     status: "en-cola",
@@ -333,7 +314,7 @@ export const resources: Resource[] = [
   {
     id: "podcast-7-things-avoid-rich",
     title: "7 Things You Should Avoid If You Want to Be Rich",
-    description: "Mark Tilbury comparte 7 cosas que debés evitar si querés ser rico. Estrategias clave para la riqueza.",
+    description: "Mark Tilbury comparte 7 cosas que debes evitar si quieres ser rico. Estrategias clave para la riqueza.",
     type: "podcast",
     category: "finanzas",
     url: "https://youtu.be/KMbFjoHUYbA",
@@ -369,7 +350,7 @@ export const resources: Resource[] = [
   {
     id: "podcast-print-on-demand",
     title: "The Only Print On Demand Guide You Need in 2026 (With AI)",
-    description: "Guía completa de print on demand con AI para principiantes. Cómo generá ingresos pasivos.",
+    description: "Guía completa de print on demand con AI para principiantes. Cómo generar ingresos pasivos.",
     type: "podcast",
     category: "negocios",
     url: "https://youtu.be/9tKeNT-k4kk",
@@ -417,8 +398,8 @@ export const resources: Resource[] = [
     description: "Guía práctica para estudiantes que quieren ganar $10,000 rápidamente.",
     type: "podcast",
     category: "negocios",
-    url: "https://youtu.be/XyZ_X9-k8q8",
-    tags: ["estudiantes", "ingresos", "estrategia"],
+    url: "https://youtu.be/BvDAUqLQ-uc",
+    tags: ["estudiantes", "ingresos", "emprendimiento"],
   },
   {
     id: "podcast-24h-richest-entrepreneur",
@@ -429,58 +410,23 @@ export const resources: Resource[] = [
     url: "https://youtu.be/cLdMjVvP7kE",
     tags: ["emprendimiento", "mentoría", "éxito"],
   },
-  {
-    id: "podcast-10k-student-2",
-    title: "Do THIS to Make $10,000 as a Student (Part 2)",
-    description: "Segunda parte de la guía práctica para estudiantes. Más estrategias de ingresos.",
-    type: "podcast",
-    category: "negocios",
-    url: "https://youtu.be/BvDAUqLQ-uc",
-    tags: ["estudiantes", "ingresos", "emprendimiento"],
-  },
-  {
-    id: "podcast-7-signs-rich",
-    title: "7 Signs You'll Become Rich",
-    description: "Señales psicológicas y de comportamiento que indican un futuro de riqueza.",
-    type: "podcast",
-    category: "finanzas",
-    url: "https://youtu.be/JqJ2l4frTrU",
-    tags: ["riqueza", "señales", "éxito"],
-  },
-  {
-    id: "podcast-ai-business-2026",
-    title: "Best AI Business to Start in 2026",
-    description: "Análisis de los mejores modelos de negocio basados en inteligencia artificial para este año.",
-    type: "podcast",
-    category: "negocios",
-    url: "https://youtu.be/mwYsapR6cYk",
-    tags: ["AI", "negocios", "2026"],
-  },
-  {
-    id: "podcast-financial-freedom-fast",
-    title: "How to Get Financial Freedom Fast",
-    description: "Estrategias aceleradas para alcanzar la libertad financiera en tiempo récord.",
-    type: "podcast",
-    category: "finanzas",
-    url: "https://youtu.be/C_UeYBBogPA",
-    tags: ["libertad financiera", "finanzas", "rapidez"],
-  },
-  {
-    id: "podcast-dropshipping-dead",
-    title: "Is Dropshipping Dead in 2026?",
-    description: "La verdad sobre el dropshipping en el mercado actual y cómo adaptarte.",
-    type: "podcast",
-    category: "negocios",
-    url: "https://youtu.be/rhuYy9LP72M",
-    tags: ["dropshipping", "ecommerce", "realidad"],
-  },
-  {
-    id: "podcast-passive-income-ai",
-    title: "Passive Income with AI (Step by Step)",
-    description: "Guía paso a paso para crear fuentes de ingresos pasivos usando herramientas de IA.",
-    type: "podcast",
-    category: "negocios",
-    url: "https://youtu.be/9tKeNT-k4kk",
-    tags: ["ingresos pasivos", "AI", "guía"],
-  }
 ];
+
+export const resourceTypeLabels: Record<ResourceType, string> = {
+  libro: "Libro",
+  podcast: "Podcast",
+  plataforma: "Plataforma",
+  youtube: "YouTube",
+};
+
+export const statusLabels: Record<Status, string> = {
+  leyendo: "Leyendo",
+  "en-cola": "En cola",
+  completado: "Completado",
+};
+
+export const statusColors: Record<Status, string> = {
+  leyendo: "#C8922A",
+  "en-cola": "#6B8E9E",
+  completado: "#7B9E87",
+};

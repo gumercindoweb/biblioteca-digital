@@ -1,6 +1,7 @@
 /**
  * HOME — Biblioteca Digital
  * Gumercindo Jiménez Branding
+ * Mantiene estructura original de Archivo Nocturno
  */
 
 import { useState, useMemo, useCallback } from "react";
@@ -47,7 +48,11 @@ export default function Home() {
   // Conteo por tipo en la vista actual
   const typeCounts = useMemo(() => {
     const counts: Record<string, number> = { libro: 0, podcast: 0, plataforma: 0, youtube: 0 };
-    filteredResources.forEach((r) => { counts[r.type] = (counts[r.type] || 0) + 1; });
+    filteredResources.forEach((r) => { 
+      if (counts[r.type] !== undefined) {
+        counts[r.type]++;
+      }
+    });
     return counts;
   }, [filteredResources]);
 
@@ -81,12 +86,12 @@ export default function Home() {
           <div className="relative z-10">
             {/* Numeral de categoría */}
             <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.3em] text-gj-teal">
-              {activeCat?.numeral || "EST"} — Estante
+              {activeCat?.numeral || "∞"} — Estante
             </p>
 
             {/* Título de categoría */}
             <h2 className="text-4xl font-bold text-white uppercase tracking-tight mb-4">
-              {activeCat?.name || "Todos los recursos"}
+              {activeCat?.name || "Todos"}
             </h2>
 
             {/* Línea decorativa */}
