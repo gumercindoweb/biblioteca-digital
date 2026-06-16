@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useRef } from "react";
 import { Resource, Note } from "@/lib/data";
+import ReactPlayer from "react-player";
 
 interface NotesContextType {
   selectedResource: Resource | null;
@@ -8,6 +9,11 @@ interface NotesContextType {
   getResourceNotes: (resourceId: string) => Note[];
   addNote: (resourceId: string, note: Note) => void;
   deleteNote: (resourceId: string, noteId: string) => void;
+  // Video Player Support
+  playerRef: React.MutableRefObject<any>;
+  currentTime: number;
+  setCurrentTime: (time: number) => void;
+  seekTo: (seconds: number) => void;
 }
 
 const NotesContext = createContext<NotesContextType | undefined>(undefined);
@@ -15,6 +21,8 @@ const NotesContext = createContext<NotesContextType | undefined>(undefined);
 export function NotesProvider({ children }: { children: React.ReactNode }) {
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
   const [notesMap, setNotesMap] = useState<Record<string, Note[]>>({});
+  const [currentTime, setCurrentTime] = useState(0);
+  const playerRef = useRef<any>(null);
 
   const updateNotes = (resourceId: string, notes: Note[]) => {
     setNotesMap((prev) => ({ ...prev, [resourceId]: notes }));
@@ -38,6 +46,12 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
     }));
   };
 
+  const seekTo = (seconds: number) => {
+    if (playerRef.current) {
+      playerRef.current.seekTo(seconds, "seconds");
+    }
+  };
+
   return (
     <NotesContext.Provider
       value={{
@@ -47,6 +61,10 @@ export function NotesProvider({ children }: { children: React.ReactNode }) {
         getResourceNotes,
         addNote,
         deleteNote,
+        playerRef,
+        currentTime,
+        setCurrentTime,
+        seekTo,
       }}
     >
       {children}

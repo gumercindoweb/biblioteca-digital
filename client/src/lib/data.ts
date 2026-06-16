@@ -12,6 +12,7 @@ export type Note = {
   type: NoteType;
   content: string;
   createdAt: string;
+  timestamp?: number; // Tiempo en segundos del video
 };
 
 export type Category = {
@@ -62,6 +63,9 @@ export const categories: Category[] = [
   { id: "espiritualidad", name: "Espiritualidad", numeral: "V", color: "#0A8769" },
   { id: "desarrollo-personal", name: "Desarrollo Personal", numeral: "VI", color: "#0A8769" },
   { id: "finanzas", name: "Finanzas", numeral: "VII", color: "#0A8769" },
+  { id: "flyfree", name: "Flyfree", numeral: "VIII", color: "#0A8769" },
+  { id: "flyfree-adulto", name: "Flyfree Adulto", numeral: "IX", color: "#0A8769" },
+  { id: "comunidad-nm", name: "Comunidad NM", numeral: "X", color: "#0A8769" },
 ];
 
 export const resources: Resource[] = [
@@ -183,7 +187,7 @@ export const resources: Resource[] = [
     description: "Steven Bartlett comparte historias de emprendimiento, negocios y mentalidad de éxito con invitados de alto nivel.",
     type: "youtube",
     category: "negocios",
-    url: "https://www.youtube.com/@TheDiaryOfACEO",
+    url: "https://www.youtube.com/watch?v=TheDiaryOfACEO",
     tags: ["negocios", "emprendimiento", "mentalidad"],
   },
   {
@@ -192,7 +196,7 @@ export const resources: Resource[] = [
     description: "Contenido de Lewis Howes sobre éxito, relaciones, negocios y desarrollo personal en español.",
     type: "youtube",
     category: "desarrollo-personal",
-    url: "https://www.youtube.com/@LewisHowesEspañol",
+    url: "https://www.youtube.com/watch?v=LewisHowesEspañol",
     tags: ["éxito", "relaciones", "desarrollo personal"],
   },
   {
@@ -201,7 +205,7 @@ export const resources: Resource[] = [
     description: "Estrategias de crecimiento, escalamiento de negocios y productividad para emprendedores.",
     type: "youtube",
     category: "negocios",
-    url: "https://www.youtube.com/@danmartell",
+    url: "https://www.youtube.com/watch?v=danmartell",
     tags: ["crecimiento", "negocios", "productividad"],
   },
   {
@@ -210,7 +214,7 @@ export const resources: Resource[] = [
     description: "Técnicas de ventas, negocios y mentalidad de abundancia para alcanzar el éxito.",
     type: "youtube",
     category: "ventas",
-    url: "https://www.youtube.com/@GrantCardone",
+    url: "https://www.youtube.com/watch?v=GrantCardone",
     tags: ["ventas", "negocios", "mentalidad"],
   },
   {
@@ -219,7 +223,7 @@ export const resources: Resource[] = [
     description: "Marketing digital, negocios online y estrategias de crecimiento para emprendedores.",
     type: "youtube",
     category: "marketing",
-    url: "https://www.youtube.com/@KaleAnders",
+    url: "https://www.youtube.com/watch?v=KaleAnders",
     tags: ["marketing", "negocios digitales", "crecimiento"],
   },
   {
@@ -228,7 +232,7 @@ export const resources: Resource[] = [
     description: "Adquisición de empresas, ventas de alto nivel y escalamiento de negocios rentables.",
     type: "youtube",
     category: "negocios",
-    url: "https://www.youtube.com/@AlexHormozi",
+    url: "https://www.youtube.com/watch?v=AlexHormozi",
     tags: ["negocios", "ventas", "escalamiento"],
   },
   {
@@ -237,7 +241,7 @@ export const resources: Resource[] = [
     description: "Contenido sobre psicología, desarrollo personal, mentalidad y transformación de vida.",
     type: "youtube",
     category: "psicologia",
-    url: "https://www.youtube.com/@DanielChapan",
+    url: "https://www.youtube.com/watch?v=DanielChapan",
     tags: ["psicología", "mentalidad", "transformación"],
   },
   {
@@ -246,7 +250,7 @@ export const resources: Resource[] = [
     description: "Estrategias de negocios, emprendimiento y mentalidad empresarial para crecer exponencialmente.",
     type: "youtube",
     category: "negocios",
-    url: "https://www.youtube.com/@SimonSquibb",
+    url: "https://www.youtube.com/watch?v=SimonSquibb",
     tags: ["negocios", "emprendimiento", "estrategia"],
   },
   {
@@ -255,7 +259,7 @@ export const resources: Resource[] = [
     description: "Enseñanzas sobre espiritualidad, meditación, consciencia y transformación personal.",
     type: "youtube",
     category: "espiritualidad",
-    url: "https://www.youtube.com/@SadhguruEspañol",
+    url: "https://www.youtube.com/watch?v=SadhguruEspañol",
     tags: ["espiritualidad", "meditación", "consciencia"],
   },
   {
@@ -264,7 +268,7 @@ export const resources: Resource[] = [
     description: "Contenido sobre marketing, negocios digitales y estrategias de crecimiento online.",
     type: "youtube",
     category: "marketing",
-    url: "https://www.youtube.com/@manueltrejove",
+    url: "https://www.youtube.com/watch?v=manueltrejove",
     tags: ["marketing", "negocios digitales", "estrategia"],
   },
   {
@@ -273,7 +277,7 @@ export const resources: Resource[] = [
     description: "Seminarios y contenido de Tony Robbins sobre éxito, finanzas y transformación personal.",
     type: "youtube",
     category: "desarrollo-personal",
-    url: "https://www.youtube.com/@TonyRobbinsLive",
+    url: "https://www.youtube.com/watch?v=TonyRobbinsLive",
     tags: ["éxito", "finanzas", "transformación"],
   },
   {
@@ -282,7 +286,7 @@ export const resources: Resource[] = [
     description: "Reflexiones sobre filosofía, desarrollo personal y transformación de consciencia.",
     type: "youtube",
     category: "espiritualidad",
-    url: "https://www.youtube.com/@borjavilaseca",
+    url: "https://www.youtube.com/watch?v=borjavilaseca",
     tags: ["filosofía", "consciencia", "transformación"],
   },
   {
@@ -291,7 +295,7 @@ export const resources: Resource[] = [
     description: "Educación financiera, inversión y estrategias para construir riqueza.",
     type: "youtube",
     category: "finanzas",
-    url: "https://www.youtube.com/c/FinancialMentorsTVEspañol",
+    url: "https://www.youtube.com/watch?v=FinancialMentorsTVEspañol",
     tags: ["finanzas", "inversión", "riqueza"],
   },
   {
@@ -300,7 +304,7 @@ export const resources: Resource[] = [
     description: "Pitch de emprendedores y análisis de negocios con inversionistas destacados.",
     type: "youtube",
     category: "negocios",
-    url: "https://www.youtube.com/@SharkTankLatam",
+    url: "https://www.youtube.com/watch?v=SharkTankLatam",
     tags: ["negocios", "emprendimiento", "inversión"],
   },
   {
@@ -309,7 +313,7 @@ export const resources: Resource[] = [
     description: "Podcast sobre emprendimiento, negocios y mentalidad de éxito.",
     type: "youtube",
     category: "negocios",
-    url: "https://www.youtube.com/@tengounplanpodcast",
+    url: "https://www.youtube.com/watch?v=tengounplanpodcast",
     tags: ["emprendimiento", "negocios", "podcast"],
   },
   {
@@ -318,7 +322,7 @@ export const resources: Resource[] = [
     description: "Educación financiera, inversión y estrategias para construir riqueza y libertad financiera.",
     type: "youtube",
     category: "finanzas",
-    url: "https://www.youtube.com/@marktilbury",
+    url: "https://www.youtube.com/watch?v=marktilbury",
     tags: ["finanzas", "inversión", "riqueza"],
   },
   // ─── PLATAFORMAS ────────────────────────────────────────────
@@ -330,13 +334,14 @@ export const resources: Resource[] = [
     category: "desarrollo-personal",
     tags: ["resúmenes", "libros", "recordatorios"],
   },
+  // ─── PODCASTS (18 TOTAL) ────────────────────────────────────
   {
     id: "podcast-7-things-avoid-rich",
     title: "7 Things You Should Avoid If You Want to Be Rich",
     description: "Mark Tilbury comparte 7 cosas que debés evitar si querés ser rico. Estrategias clave para la riqueza.",
     type: "podcast",
     category: "finanzas",
-    url: "https://youtu.be/KMbFjoHUYbA",
+    url: "https://www.youtube.com/watch?v=KMbFjoHUYbA",
     tags: ["riqueza", "finanzas", "estrategia"],
   },
   {
@@ -345,7 +350,7 @@ export const resources: Resource[] = [
     description: "Lecciones clave de Mark Tilbury sobre qué desearía haber sabido antes de empezar un negocio.",
     type: "podcast",
     category: "negocios",
-    url: "https://youtu.be/A54VFBYfF9U",
+    url: "https://www.youtube.com/watch?v=A54VFBYfF9U",
     tags: ["emprendimiento", "negocios", "lecciones"],
   },
   {
@@ -354,7 +359,7 @@ export const resources: Resource[] = [
     description: "Mark Tilbury revela qué haría diferente si empezara de cero en su camino hacia la riqueza.",
     type: "podcast",
     category: "finanzas",
-    url: "https://youtu.be/6IiEoSHw9gY",
+    url: "https://www.youtube.com/watch?v=6IiEoSHw9gY",
     tags: ["finanzas", "estrategia", "experiencia"],
   },
   {
@@ -363,7 +368,7 @@ export const resources: Resource[] = [
     description: "Mark Tilbury identifica 7 señales que indican que te convertirás en millonario pronto.",
     type: "podcast",
     category: "finanzas",
-    url: "https://youtu.be/JqJ2l4frTrU",
+    url: "https://www.youtube.com/watch?v=JqJ2l4frTrU",
     tags: ["riqueza", "millonario", "señales"],
   },
   {
@@ -372,7 +377,7 @@ export const resources: Resource[] = [
     description: "Guía completa de print on demand con AI para principiantes. Cómo generá ingresos pasivos.",
     type: "podcast",
     category: "negocios",
-    url: "https://youtu.be/9tKeNT-k4kk",
+    url: "https://www.youtube.com/watch?v=9tKeNT-k4kk",
     tags: ["negocios", "AI", "ingresos pasivos"],
   },
   {
@@ -381,7 +386,7 @@ export const resources: Resource[] = [
     description: "Rutina de Mark Tilbury para gestionar tu salario y construir riqueza consistentemente.",
     type: "podcast",
     category: "finanzas",
-    url: "https://youtu.be/sPm9pynCS0k",
+    url: "https://www.youtube.com/watch?v=sPm9pynCS0k",
     tags: ["finanzas", "presupuesto", "hábitos"],
   },
   {
@@ -390,7 +395,7 @@ export const resources: Resource[] = [
     description: "La ruta más inteligente para generar $10,000 mensuales según Mark Tilbury.",
     type: "podcast",
     category: "negocios",
-    url: "https://youtu.be/mwYsapR6cYk",
+    url: "https://www.youtube.com/watch?v=mwYsapR6cYk",
     tags: ["ingresos", "negocios", "estrategia"],
   },
   {
@@ -399,7 +404,7 @@ export const resources: Resource[] = [
     description: "Camino más inteligente hacia la libertad financiera con estrategias probadas.",
     type: "podcast",
     category: "finanzas",
-    url: "https://youtu.be/C_UeYBBogPA",
+    url: "https://www.youtube.com/watch?v=C_UeYBBogPA",
     tags: ["libertad financiera", "estrategia", "finanzas"],
   },
   {
@@ -408,7 +413,7 @@ export const resources: Resource[] = [
     description: "Experimento de Mark Tilbury con dropshipping potenciado por AI. Resultados reales.",
     type: "podcast",
     category: "negocios",
-    url: "https://youtu.be/rhuYy9LP72M",
+    url: "https://www.youtube.com/watch?v=rhuYy9LP72M",
     tags: ["dropshipping", "AI", "ecommerce"],
   },
   {
@@ -417,7 +422,7 @@ export const resources: Resource[] = [
     description: "Guía práctica para estudiantes que quieren ganar $10,000 rápidamente.",
     type: "podcast",
     category: "negocios",
-    url: "https://youtu.be/XyZ_X9-k8q8",
+    url: "https://www.youtube.com/watch?v=XyZ_X9-k8q8",
     tags: ["estudiantes", "ingresos", "estrategia"],
   },
   {
@@ -426,7 +431,7 @@ export const resources: Resource[] = [
     description: "Mark Tilbury pasa 24 horas con el emprendedor más rico de YouTube. Lecciones y insights.",
     type: "podcast",
     category: "negocios",
-    url: "https://youtu.be/cLdMjVvP7kE",
+    url: "https://www.youtube.com/watch?v=cLdMjVvP7kE",
     tags: ["emprendimiento", "mentoría", "éxito"],
   },
   {
@@ -435,7 +440,7 @@ export const resources: Resource[] = [
     description: "Segunda parte de la guía práctica para estudiantes. Más estrategias de ingresos.",
     type: "podcast",
     category: "negocios",
-    url: "https://youtu.be/BvDAUqLQ-uc",
+    url: "https://www.youtube.com/watch?v=BvDAUqLQ-uc",
     tags: ["estudiantes", "ingresos", "emprendimiento"],
   },
   {
@@ -444,7 +449,7 @@ export const resources: Resource[] = [
     description: "Señales psicológicas y de comportamiento que indican un futuro de riqueza.",
     type: "podcast",
     category: "finanzas",
-    url: "https://youtu.be/JqJ2l4frTrU",
+    url: "https://www.youtube.com/watch?v=JqJ2l4frTrU",
     tags: ["riqueza", "señales", "éxito"],
   },
   {
@@ -453,7 +458,7 @@ export const resources: Resource[] = [
     description: "Análisis de los mejores modelos de negocio basados en inteligencia artificial para este año.",
     type: "podcast",
     category: "negocios",
-    url: "https://youtu.be/mwYsapR6cYk",
+    url: "https://www.youtube.com/watch?v=mwYsapR6cYk",
     tags: ["AI", "negocios", "2026"],
   },
   {
@@ -462,7 +467,7 @@ export const resources: Resource[] = [
     description: "Estrategias aceleradas para alcanzar la libertad financiera en tiempo récord.",
     type: "podcast",
     category: "finanzas",
-    url: "https://youtu.be/C_UeYBBogPA",
+    url: "https://www.youtube.com/watch?v=C_UeYBBogPA",
     tags: ["libertad financiera", "finanzas", "rapidez"],
   },
   {
@@ -471,7 +476,7 @@ export const resources: Resource[] = [
     description: "La verdad sobre el dropshipping en el mercado actual y cómo adaptarte.",
     type: "podcast",
     category: "negocios",
-    url: "https://youtu.be/rhuYy9LP72M",
+    url: "https://www.youtube.com/watch?v=rhuYy9LP72M",
     tags: ["dropshipping", "ecommerce", "realidad"],
   },
   {
@@ -480,7 +485,44 @@ export const resources: Resource[] = [
     description: "Guía paso a paso para crear fuentes de ingresos pasivos usando herramientas de IA.",
     type: "podcast",
     category: "negocios",
-    url: "https://youtu.be/9tKeNT-k4kk",
+    url: "https://www.youtube.com/watch?v=9tKeNT-k4kk",
     tags: ["ingresos pasivos", "AI", "guía"],
-  }
+  },
+  {
+    id: "podcast-richest-youtube-secrets",
+    title: "The Secrets of the Richest YouTube Entrepreneurs",
+    description: "Descubrí los secretos detrás de los canales más exitosos y rentables de YouTube.",
+    type: "podcast",
+    category: "marketing",
+    url: "https://www.youtube.com/watch?v=cLdMjVvP7kE",
+    tags: ["YouTube", "estrategia", "negocios"],
+  },
+  // ─── SUSCRIPCIONES (FLYFREE, COMUNIDAD NM) ──────────────────
+  {
+    id: "ff-intro",
+    title: "Introducción a Flyfree",
+    description: "Bienvenida y visión general del programa Flyfree para la libertad financiera.",
+    type: "youtube",
+    category: "flyfree",
+    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    tags: ["bienvenida", "libertad", "flyfree"],
+  },
+  {
+    id: "ff-adulto-mindset",
+    title: "Mindset Adulto para Negocios",
+    description: "Cómo desarrollar la madurez necesaria para gestionar empresas de alto nivel.",
+    type: "youtube",
+    category: "flyfree-adulto",
+    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    tags: ["mindset", "negocios", "adulto"],
+  },
+  {
+    id: "cnm-estrategia",
+    title: "Estrategia de Comunidad NM",
+    description: "Pilares fundamentales para construir y escalar comunidades rentables.",
+    type: "youtube",
+    category: "comunidad-nm",
+    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    tags: ["comunidad", "estrategia", "marketing"],
+  },
 ];
