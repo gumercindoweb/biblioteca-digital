@@ -1,8 +1,7 @@
-// ============================================================
-// RESOURCE CARD — Biblioteca Digital
-// Diseño: Archivo Nocturno
-// Tarjeta individual para libros, podcasts, YouTube, plataformas
-// ============================================================
+/**
+ * RESOURCE CARD — Biblioteca Digital
+ * Gumercindo Jiménez Branding
+ */
 
 import { Resource, ResourceType, statusColors, statusLabels } from "@/lib/data";
 import { BookOpen, Headphones, Monitor, Youtube, ExternalLink, Tag, FileText } from "lucide-react";
@@ -16,17 +15,17 @@ const typeIcons: Record<ResourceType, React.ReactNode> = {
 };
 
 const typeColors: Record<ResourceType, string> = {
-  libro: "#C8922A",
-  podcast: "#7B9E87",
-  plataforma: "#6B8E9E",
-  youtube: "#C0392B",
+  libro: "#0A8769", // Teal
+  podcast: "#A8C2C0", 
+  plataforma: "#E6F2F1",
+  youtube: "#0A8769",
 };
 
 const typeBg: Record<ResourceType, string> = {
-  libro: "rgba(200,146,42,0.12)",
-  podcast: "rgba(123,158,135,0.12)",
-  plataforma: "rgba(107,142,158,0.12)",
-  youtube: "rgba(192,57,43,0.12)",
+  libro: "rgba(10, 135, 105, 0.12)",
+  podcast: "rgba(168, 194, 192, 0.12)",
+  plataforma: "rgba(230, 242, 241, 0.12)",
+  youtube: "rgba(10, 135, 105, 0.12)",
 };
 
 interface ResourceCardProps {
@@ -43,24 +42,24 @@ export default function ResourceCard({ resource, index }: ResourceCardProps) {
 
   return (
     <div
-      className="resource-card p-4 animate-fade-slide-up cursor-pointer transition-all hover:shadow-lg hover:border-amber-600/50"
+      className="gj-card p-5 animate-fade-slide-up cursor-pointer transition-all hover:border-gj-teal/40 group"
       style={{ animationDelay: `${index * 40}ms` }}
       onClick={() => setSelectedResource(resource)}
     >
       {/* Indicador de notas */}
       {hasNotes && (
-        <div className="flex items-center gap-1 mb-2 text-amber-600">
-          <FileText size={13} />
-          <span className="text-xs font-medium">{notes.length} nota{notes.length > 1 ? "s" : ""}</span>
+        <div className="flex items-center gap-1 mb-3 text-gj-teal">
+          <FileText size={14} />
+          <span className="text-[10px] font-bold uppercase tracking-widest">{notes.length} nota{notes.length > 1 ? "s" : ""}</span>
         </div>
       )}
 
       {/* Header de la tarjeta */}
-      <div className="flex items-start justify-between gap-2 mb-3">
+      <div className="flex items-start justify-between gap-2 mb-4">
         <div className="flex items-center gap-2 flex-wrap">
           {/* Badge de tipo */}
           <span
-            className="type-badge flex items-center gap-1"
+            className="flex items-center gap-1.5 px-2 py-0.5 border text-[9px] font-bold uppercase tracking-widest"
             style={{
               color,
               borderColor: `${color}40`,
@@ -80,7 +79,7 @@ export default function ResourceCard({ resource, index }: ResourceCardProps) {
           {/* Badge de estado */}
           {resource.status && (
             <span
-              className="type-badge"
+              className="px-2 py-0.5 border text-[9px] font-bold uppercase tracking-widest"
               style={{
                 color: statusColors[resource.status],
                 borderColor: `${statusColors[resource.status]}40`,
@@ -98,76 +97,42 @@ export default function ResourceCard({ resource, index }: ResourceCardProps) {
             href={resource.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 p-1 rounded transition-colors"
-            style={{ color: "#8A7D6B" }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#C8922A")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#8A7D6B")}
+            className="shrink-0 p-1 text-gj-mint/20 hover:text-gj-teal transition-colors"
             onClick={(e) => e.stopPropagation()}
           >
-            <ExternalLink size={13} />
+            <ExternalLink size={14} />
           </a>
         )}
       </div>
 
       {/* Título */}
-      <h3
-        className="mb-1 leading-snug"
-        style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: "0.95rem",
-          fontWeight: 600,
-          color: "#F0E6D3",
-          lineHeight: 1.3,
-        }}
-      >
+      <h3 className="mb-2 font-bold text-white text-base uppercase tracking-tight leading-tight group-hover:text-gj-teal transition-colors">
         {resource.title}
       </h3>
 
       {/* Autor */}
       {resource.author && (
-        <p
-          className="mb-2"
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "0.75rem",
-            color: "#C8922A",
-            fontStyle: "italic",
-          }}
-        >
+        <p className="mb-3 text-[10px] font-bold text-gj-teal uppercase tracking-widest">
           {resource.author}
         </p>
       )}
 
       {/* Descripción */}
       {resource.description && (
-        <p
-          className="mb-3 leading-relaxed"
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "0.78rem",
-            color: "#8A7D6B",
-            lineHeight: 1.55,
-          }}
-        >
+        <p className="mb-4 text-xs text-gj-mint-light/60 leading-relaxed line-clamp-3">
           {resource.description}
         </p>
       )}
 
       {/* Tags */}
       {resource.tags && resource.tags.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mt-auto pt-2" style={{ borderTop: "1px solid oklch(0.18 0.008 60)" }}>
+        <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-gj-teal/10">
           {resource.tags.map((tag) => (
             <span
               key={tag}
-              className="flex items-center gap-1"
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "0.58rem",
-                color: "oklch(0.45 0.008 60)",
-                letterSpacing: "0.04em",
-              }}
+              className="flex items-center gap-1 text-[9px] font-bold uppercase tracking-widest text-gj-mint/20"
             >
-              <Tag size={9} />
+              <Tag size={10} className="text-gj-teal/40" />
               {tag}
             </span>
           ))}

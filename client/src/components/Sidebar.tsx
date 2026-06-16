@@ -1,11 +1,10 @@
-// ============================================================
-// SIDEBAR — Biblioteca Digital
-// Diseño: Archivo Nocturno — navegación lateral persistente
-// Categorías con numerales romanos + filtros por tipo
-// ============================================================
+/**
+ * SIDEBAR — Biblioteca Digital
+ * Gumercindo Jiménez Branding
+ */
 
 import { useState } from "react";
-import { categories, ResourceType, resourceTypeLabels } from "@/lib/data";
+import { categories, ResourceType } from "@/lib/data";
 import { BookOpen, Headphones, Monitor, Youtube, Library, Search, X, Plus } from "lucide-react";
 
 const typeIcons: Record<ResourceType, React.ReactNode> = {
@@ -48,71 +47,45 @@ export default function Sidebar({
 
   return (
     <aside
-      className="w-[220px] min-w-[220px] h-screen sticky top-0 flex flex-col overflow-y-auto"
-      style={{
-        background: "oklch(0.10 0.008 60)",
-        borderRight: "1px solid oklch(0.20 0.008 60)",
-      }}
+      className="w-[240px] min-w-[240px] h-screen sticky top-0 flex flex-col overflow-y-auto bg-gj-petrol-dark border-r border-gj-teal/10 font-body"
     >
       {/* Logo + Nombre */}
-      <div className="px-5 pt-6 pb-4">
-        <div className="flex items-center gap-3 mb-1">
+      <div className="px-6 pt-8 pb-6">
+        <div className="flex flex-col gap-4 mb-2">
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663762053854/aDtukih2ArR33vbrmSK4vF/biblioteca-logo-VLci4VmAnJ7BTo6JrEh2qR.webp"
-            alt="Biblioteca Logo"
-            className="w-8 h-8 object-contain"
+            src="/assets/logo-gj.webp"
+            alt="Gumercindo Jiménez Logo"
+            className="w-full max-w-[140px] object-contain"
           />
           <div>
-            <p
-              className="text-xs tracking-widest uppercase"
-              style={{ fontFamily: "'JetBrains Mono', monospace", color: "#C8922A", fontSize: "0.6rem" }}
-            >
-              Mi
-            </p>
-            <h1
-              className="leading-none"
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "1rem",
-                fontWeight: 700,
-                color: "#F0E6D3",
-              }}
-            >
-              Biblioteca
+            <h1 className="text-sm font-bold text-white uppercase tracking-[0.2em] leading-tight">
+              Biblioteca <br/> Digital
             </h1>
           </div>
         </div>
-        <div className="amber-line-solid mt-3" />
+        <div className="h-px bg-gj-teal/20 mt-4" />
       </div>
 
       {/* Buscador */}
-      <div className="px-4 pb-4">
+      <div className="px-4 pb-6">
         <div
-          className="flex items-center gap-2 px-3 py-2 rounded"
-          style={{
-            background: "oklch(0.14 0.008 60)",
-            border: `1px solid ${searchFocused ? "rgba(200,146,42,0.5)" : "oklch(0.22 0.008 60)"}`,
-            transition: "border-color 180ms ease",
-          }}
+          className={`flex items-center gap-2 px-3 py-2 bg-gj-petrol border transition-all ${
+            searchFocused ? "border-gj-teal" : "border-gj-teal/10"
+          }`}
         >
-          <Search size={13} style={{ color: "#8A7D6B" }} />
+          <Search size={14} className="text-gj-teal" />
           <input
             type="text"
-            placeholder="Buscar..."
+            placeholder="Buscá..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             onFocus={() => setSearchFocused(true)}
             onBlur={() => setSearchFocused(false)}
-            className="flex-1 bg-transparent outline-none text-sm"
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              color: "#F0E6D3",
-              fontSize: "0.8rem",
-            }}
+            className="flex-1 bg-transparent outline-none text-white text-xs placeholder:text-gj-mint/20"
           />
           {searchQuery && (
             <button onClick={() => onSearchChange("")}>
-              <X size={12} style={{ color: "#8A7D6B" }} />
+              <X size={14} className="text-gj-mint/20 hover:text-white" />
             </button>
           )}
         </div>
@@ -120,47 +93,27 @@ export default function Sidebar({
 
       {/* Categorías */}
       <nav className="flex-1 px-3">
-        <p
-          className="px-2 mb-2"
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "0.6rem",
-            letterSpacing: "0.12em",
-            color: "#8A7D6B",
-            textTransform: "uppercase",
-          }}
-        >
+        <p className="px-3 mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-gj-teal/60">
           Estantes
         </p>
 
-        <ul className="space-y-0.5">
+        <ul className="space-y-1">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat.id;
             return (
               <li key={cat.id}>
                 <button
                   onClick={() => onCategoryChange(cat.id)}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded text-left transition-all"
-                  style={{
-                    background: isActive ? "rgba(200,146,42,0.10)" : "transparent",
-                    borderLeft: isActive ? "2px solid #C8922A" : "2px solid transparent",
-                    color: isActive ? "#C8922A" : "#8A7D6B",
-                    fontSize: "0.82rem",
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontWeight: isActive ? 500 : 400,
-                  }}
+                  className={`w-full flex items-center gap-3 px-3 py-2 text-left transition-all ${
+                    isActive 
+                      ? "bg-gj-teal/10 text-white border-l-2 border-gj-teal" 
+                      : "text-gj-mint/40 hover:text-gj-mint hover:bg-gj-teal/5 border-l-2 border-transparent"
+                  }`}
                 >
-                  <span
-                    style={{
-                      fontFamily: "'JetBrains Mono', monospace",
-                      fontSize: "0.6rem",
-                      color: isActive ? "#C8922A" : "oklch(0.38 0.008 60)",
-                      minWidth: "16px",
-                    }}
-                  >
+                  <span className={`font-mono text-[10px] font-bold min-w-[20px] ${isActive ? "text-gj-teal" : "text-gj-mint/20"}`}>
                     {cat.numeral}
                   </span>
-                  <span className="truncate">{cat.name}</span>
+                  <span className="text-xs font-medium uppercase tracking-widest truncate">{cat.name}</span>
                 </button>
               </li>
             );
@@ -168,48 +121,30 @@ export default function Sidebar({
         </ul>
 
         {/* Separador */}
-        <div className="amber-line-solid my-4" />
+        <div className="h-px bg-gj-teal/10 my-6 mx-3" />
 
         {/* Filtro por tipo */}
-        <p
-          className="px-2 mb-2"
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "0.6rem",
-            letterSpacing: "0.12em",
-            color: "#8A7D6B",
-            textTransform: "uppercase",
-          }}
-        >
+        <p className="px-3 mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-gj-teal/60">
           Tipo
         </p>
 
-        <ul className="space-y-0.5">
+        <ul className="space-y-1">
           {allTypes.map((t) => {
             const isActive = selectedType === t.id;
             return (
               <li key={t.id}>
                 <button
                   onClick={() => onTypeChange(t.id)}
-                  className="w-full flex items-center gap-2.5 px-3 py-2 rounded text-left transition-all"
-                  style={{
-                    background: isActive ? "rgba(200,146,42,0.10)" : "transparent",
-                    borderLeft: isActive ? "2px solid #C8922A" : "2px solid transparent",
-                    color: isActive ? "#C8922A" : "#8A7D6B",
-                    fontSize: "0.8rem",
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontWeight: isActive ? 500 : 400,
-                  }}
+                  className={`w-full flex items-center gap-3 px-3 py-2 text-left transition-all ${
+                    isActive 
+                      ? "bg-gj-teal/10 text-white border-l-2 border-gj-teal" 
+                      : "text-gj-mint/40 hover:text-gj-mint hover:bg-gj-teal/5 border-l-2 border-transparent"
+                  }`}
                 >
-                  {t.id !== "todos" && (
-                    <span style={{ color: isActive ? "#C8922A" : "#8A7D6B" }}>
-                      {typeIcons[t.id as ResourceType]}
-                    </span>
-                  )}
-                  {t.id === "todos" && (
-                    <Library size={14} style={{ color: isActive ? "#C8922A" : "#8A7D6B" }} />
-                  )}
-                  <span>{t.label}</span>
+                  <span className={isActive ? "text-gj-teal" : "text-gj-mint/20"}>
+                    {t.id !== "todos" ? typeIcons[t.id as ResourceType] : <Library size={14} />}
+                  </span>
+                  <span className="text-xs font-medium uppercase tracking-widest">{t.label}</span>
                 </button>
               </li>
             );
@@ -218,37 +153,16 @@ export default function Sidebar({
       </nav>
 
       {/* Footer */}
-      <div className="px-4 py-4 mt-auto">
-        <div className="amber-line-solid mb-3" />
+      <div className="px-4 py-6 mt-auto">
+        <div className="h-px bg-gj-teal/10 mb-6" />
         <button
           onClick={onAddResource}
-          className="w-full flex items-center justify-center gap-2 py-2 rounded transition-all"
-          style={{
-            background: "rgba(200,146,42,0.10)",
-            border: "1px solid rgba(200,146,42,0.3)",
-            color: "#C8922A",
-            fontSize: "0.78rem",
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 500,
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.background = "rgba(200,146,42,0.18)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLButtonElement).style.background = "rgba(200,146,42,0.10)";
-          }}
+          className="gj-btn w-full flex items-center justify-center gap-2 py-2.5 text-xs"
         >
           <Plus size={14} />
           Agregar recurso
         </button>
-        <p
-          className="text-center mt-3"
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "0.6rem",
-            color: "oklch(0.38 0.008 60)",
-          }}
-        >
+        <p className="text-center mt-4 font-mono text-[9px] uppercase tracking-widest text-gj-mint/20">
           {totalCount} recursos en tu estante
         </p>
       </div>
